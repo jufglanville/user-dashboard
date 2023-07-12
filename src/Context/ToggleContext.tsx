@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useState } from 'react';
 
 interface IToggle {
   darkMode: boolean;
@@ -14,11 +14,11 @@ export const ToggleContext = createContext({} as IToggle);
 function ToggleProvider({ children }: IProps) {
   const [darkMode, setDarkMode] = useState(false);
 
-  const activateDarkMode = () => {
+  const activateDarkMode = useCallback(() => {
     setDarkMode((prev) => !prev);
-  };
+  }, []);
 
-  const values = {
+  const values: IToggle = {
     setDarkMode: activateDarkMode,
     darkMode: darkMode,
   };

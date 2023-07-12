@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './styled/Global';
 import ToggleProvider from './Context/ToggleContext.tsx';
 
@@ -12,16 +11,14 @@ function App() {
   return (
     <>
       <ToggleProvider>
-        <ThemeProvider theme={{}}>
-          <GlobalStyles />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/user/:id" element={<User />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </ThemeProvider>
+        <GlobalStyles />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/user/:id" element={<User />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
       </ToggleProvider>
     </>
   );
