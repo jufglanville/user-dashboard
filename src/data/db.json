@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Doe",
+      "email": "john.doe@mail.com",
+      "phone": "123-123-123",
+      "location": "New York",
+      "hobby": "Fencing"
+    },
+    {
+      "id": 2,
+      "firstname": "Jane",
+      "lastname": "Doe",
+      "email": "jane.doe@mail.com",
+      "phone": "345-345-345",
+      "location": "Wicklow",
+      "hobby": "Bowling"
+    },
+    {
+      "id": 3,
+      "firstname": "Jack",
+      "lastname": "Dee",
+      "email": "jack.dee@mail.com",
+      "phone": "567-567-567",
+      "location": "Dublin",
+      "hobby": "Skiing"
+    },
+    {
+      "id": 4,
+      "firstname": "Jill",
+      "lastname": "Dee",
+      "email": "jill.dee@mail.com",
+      "phone": "789-789-789",
+      "location": "Cork",
+      "hobby": "Surfing"
+    },
+    {
+      "id": "r41z7vwhe",
+      "firstname": "asdfasdf",
+      "lastname": "asdfasdf",
+      "email": "asdf@asdf.asdf",
+      "phone": "asdfasdf",
+      "location": "asdfasdf",
+      "hobby": "asdfasdf"
+    }
+  ]
+}
