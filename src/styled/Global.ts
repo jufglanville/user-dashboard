@@ -103,5 +103,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     cursor: default;
     user-select: none;
+    background-color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    transition: all 0.3s ease-in-out;
   }
 `;

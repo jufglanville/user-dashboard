@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyles } from './styled/Global';
-import ToggleProvider from './Context/ToggleContext.tsx';
+import ThemeContextProvider from './Context/ThemeContext.tsx';
 
 import Error from './pages/Error';
 import Home from './pages/Home';
 import User from './pages/User';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar.tsx';
 
 function App() {
   return (
     <>
-      <ToggleProvider>
+      <ThemeContextProvider>
         <GlobalStyles />
         <Navbar />
         <Routes>
@@ -18,8 +18,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/user/:id" element={<User />} />
           <Route path="*" element={<Error />} />
-        </Routes>
-      </ToggleProvider>
+        </Routes>{' '}
+      </ThemeContextProvider>
     </>
   );
 }

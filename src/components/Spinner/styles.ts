@@ -1,13 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-const Spinner = () => {
-  return (
-    <SpinnerContainer>
-      <SpinnerElement />
-    </SpinnerContainer>
-  );
-};
-
 const loading = keyframes`
   0% {
     transform: rotate(0deg);
@@ -31,19 +23,17 @@ const loading = keyframes`
   }
 `;
 
-const SpinnerContainer = styled.div`
+export const Container = styled.div`
   width: 100px;
   height: 100px;
   margin: 0 auto;
   position: relative;
 `;
 
-const SpinnerElement = styled.div`
+export const Spinner = styled.div`
   width: 100px;
   height: 100px;
   border: 10px solid #ccc;
   border-radius: 50%;
   animation: ${loading} 1s infinite linear;
 `;
-
-export default Spinner;
