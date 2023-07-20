@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  api:
+    build: ./backend
+    container_name: api_c
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+  dashboard:
+    build: ./frontend
+    container_name: dashboard_c
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
