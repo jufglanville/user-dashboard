@@ -36,3 +36,19 @@ export const Table = styled.table`
     vertical-align: middle;
   }
 `;
+
+export const SortIcon = styled.span<{ $direction: 'asc' | 'desc' }>`
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.25rem;
+  border-left: 0.25rem solid transparent;
+  border-right: 0.25rem solid transparent;
+  border-top: ${({ $direction }) =>
+    $direction === 'desc' ? '0.25rem solid' : '0.25rem solid transparent'};
+  border-bottom: ${({ $direction }) =>
+    $direction === 'asc' ? '0.25rem solid' : '0.25rem solid transparent'};
+  transform: translateY(
+    ${({ $direction }) => ($direction === 'asc' ? '-4px' : '0')}
+  );
+`;

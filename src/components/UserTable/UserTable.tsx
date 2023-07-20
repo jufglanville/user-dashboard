@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { TUser } from '../../types';
@@ -6,8 +7,11 @@ import Spinner from '../Spinner/Spinner';
 import Button from '../Button/Button';
 
 import * as Sc from './styles';
+import TableHeader from './TableHeader';
 
 const UserTable = () => {
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [sortKey, setSortKey] = useState<keyof TUser | null>(null);
   const {
     data: users,
     loading,
@@ -28,6 +32,28 @@ const UserTable = () => {
     }
   };
 
+  const sortRows = (key: keyof TUser): void => {
+    let sortOrder: 'asc' | 'desc';
+
+    if (sortKey === key) {
+      sortOrder = sortDirection === 'asc' ? 'desc' : 'asc';
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortKey(key);
+      setSortDirection('desc');
+      sortOrder = 'desc';
+    }
+
+    const sortedUsers = [...users].sort((a: TUser, b: TUser) => {
+      if (sortOrder === 'asc') {
+        return a[key] > b[key] ? -1 : 1;
+      }
+      return a[key] < b[key] ? -1 : 1;
+    });
+
+    setUsers(sortedUsers);
+  };
+
   if (loading) return <Spinner />;
 
   return (
@@ -38,13 +64,62 @@ const UserTable = () => {
           <Sc.Table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>First</th>
-                <th>Last</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Location</th>
-                <th>Hobby</th>
+                <TableHeader
+                  active={sortKey === 'id'}
+                  sortRows={sortRows}
+                  sortKey="id"
+                  sortDirection={sortDirection}
+                >
+                  ID
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'firstname'}
+                  sortRows={sortRows}
+                  sortKey="firstname"
+                  sortDirection={sortDirection}
+                >
+                  First
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'lastname'}
+                  sortRows={sortRows}
+                  sortKey="lastname"
+                  sortDirection={sortDirection}
+                >
+                  Last
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'email'}
+                  sortRows={sortRows}
+                  sortKey="email"
+                  sortDirection={sortDirection}
+                >
+                  Email
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'phone'}
+                  sortRows={sortRows}
+                  sortKey="phone"
+                  sortDirection={sortDirection}
+                >
+                  Phone
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'location'}
+                  sortRows={sortRows}
+                  sortKey="location"
+                  sortDirection={sortDirection}
+                >
+                  Location
+                </TableHeader>
+                <TableHeader
+                  active={sortKey === 'hobby'}
+                  sortRows={sortRows}
+                  sortKey="hobby"
+                  sortDirection={sortDirection}
+                >
+                  Hobby
+                </TableHeader>
                 <th>Actions</th>
               </tr>
             </thead>
