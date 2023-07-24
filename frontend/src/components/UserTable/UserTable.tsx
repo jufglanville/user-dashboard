@@ -18,7 +18,7 @@ const UserTable = () => {
     error,
     setData: setUsers,
     setError,
-  } = useFetch<TUser[]>('http://localhost:3000/users', []);
+  } = useFetch<TUser[]>('http://localhost:4000/users', []);
 
   const handleDelete = async (id: string) => {
     const originalUsers = [...users];

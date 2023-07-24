@@ -33,7 +33,7 @@ const UserForm = () => {
       ? async () => {
           try {
             const user = await getUser(id as string);
-            return user;
+            return user[0];
           } catch (err) {
             console.error(err);
           }

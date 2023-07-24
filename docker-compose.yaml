@@ -1,10 +1,21 @@
 version: "3.8"
 services:
+  postgres-db:
+    image: postgres
+    container_name: postgres-db
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
   api:
     build: ./backend
     container_name: api_c
+    depends_on:
+      - postgres-db
+    links:
+      - postgres-db
     ports:
-      - "4000:4000"
+      - "${PORT}:${PORT}"
     volumes:
       - ./backend:/app
       - /app/node_modules
